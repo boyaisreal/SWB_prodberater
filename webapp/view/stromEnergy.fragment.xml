@@ -1,0 +1,30 @@
+<core:FragmentDefinition
+        xmlns:mvc="sap.ui.core.mvc"
+        displayBlock="true"
+        xmlns="sap.m"
+        xmlns:core="sap.ui.core"
+>
+    <WizardStep id="electricityStep" title="Strom" validated="true" nextStep="gasStep" icon="sap-icon://lightbulb" activate="electricityStepActivate">
+        <MessageStrip class="sapUiSmallMarginBottom" text="Bitte geben Sie hier den voraussichtlichen Stromverbrauch pro Jahr mit." showIcon="true"/>
+        <VBox class="sapUiSmallMarginTop">
+            <HBox>
+                <VBox class="sapUiLargeMarginEnd">
+                    <Label text="Verbrauch: " labelFor="consumptionInputelectric"/>
+                    <ComboBox id="consumptionInputelectric" showSecondaryValues="true"
+                              items="{path: 'util>/consumptionSetpsElectric',sorter: { path: 'consumptionSetpsElectric' }}" change="getProducts($event, 'electric')">
+                        <core:ListItem key="{util>step}" text="{util>step}" additionalText="{util>addInformation}"/>
+                    </ComboBox>
+                </VBox>
+                <VBox/>
+                <VBox>
+                    <Label text="Verbrauch Vormieter:" labelFor="consumptionLastRentTextElectric"/>
+                    <Text text="{util>/selectedConsumptionPoint/electric/LastConsumption}" id="consumptionLastRentTextElectric"/>
+                </VBox>
+            </HBox>
+            <core:Fragment fragmentName="sap.ui.mr.learn.odatadraftone.view.CardCurrentCustomerProductElectric"
+                           type="XML" class="sapUiLargeMarginTop"/>
+            <core:Fragment fragmentName="sap.ui.mr.learn.odatadraftone.view.CardElectricity" type="XML"
+                           class="sapUiLargeMarginTop"/>
+        </VBox>
+    </WizardStep>
+</core:FragmentDefinition>

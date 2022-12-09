@@ -1,0 +1,45 @@
+<mvc:View
+    controllerName="sap.ui.mr.learn.odatadraftone.controller.view."
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:f="sap.f"
+	xmlns:card="sap.f.cards"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+ 
+
+>
+    <Shell id="shell">
+        <App id="app">
+            <pages>
+                <Page id="page" title="{i18n>title}">
+                    <content>
+                    <Wizard id="CreateProductWizard"
+						class="sapUiResponsivePadding--header sapUiResponsivePadding--content"
+						showNextButton="false"
+                        renderMode="Page"
+                        enableBranching="true"
+                        finishButtonText="Finish">
+                        <core:Fragment fragmentName="sap.ui.mr.learn.odatadraftone.view.deliveryPointStep" type="XML"/>
+                        <core:Fragment fragmentName="sap.ui.mr.learn.odatadraftone.view.stromEnergy" type="XML"/>
+                        <core:Fragment fragmentName="sap.ui.mr.learn.odatadraftone.view.gasEnergy" type="XML"/>
+                        <core:Fragment fragmentName="sap.ui.mr.learn.odatadraftone.view.waterEnergy" type="XML"/>
+                       
+                    </Wizard>
+                    </content>
+                    <footer>
+						<Bar>
+							<contentRight>
+                                <Button text="Weiter" type="Ghost" press="onNextStep" enabled= "{= ${util>/visibility/forward} }"/>
+								<Button text="Angebot" type="Ghost" press="onPress"  enabled="false" id="offerButton" visible="false"/>
+                                <Button text="Auftrag"  type="Ghost" press="onPress" enabled="false"  id="assignmentButton"/>
+                                <Button text="Abbrechen" type="Emphasized" press="handleWizardCancel" />
+							</contentRight>
+						</Bar>
+					</footer>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</mvc:View>

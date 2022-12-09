@@ -1,0 +1,37 @@
+{
+  "name": "odatadraftone",
+  "version": "0.0.1",
+  "private": true,
+  "description": "First generated application for using my own ODATA service",
+  "keywords": [
+    "ui5",
+    "openui5",
+    "sapui5"
+  ],
+  "main": "webapp/index.html",
+  "dependencies": {},
+  "devDependencies": {
+    "@ui5/cli": "^2.14.1",
+    "@sap/ux-ui5-tooling": "1",
+    "rimraf": "3.0.2"
+  },
+  "scripts": {
+    "start": "fiori run --open 'test/flpSandbox.html#sapuimrlearnodatadraftone-display'",
+    "start-local": "fiori run --config ./ui5-local.yaml --open 'test/flpSandbox.html#sapuimrlearnodatadraftone-display'",
+    "build": "ui5 build --config=ui5.yaml --clean-dest --dest dist",
+    "deploy": "fiori verify",  
+    "deploy-config": "fiori add deploy-config",
+    "deploy_old": "npm run build && fiori deploy --config deploy.yaml --include-task=generateManifestBundle generateCachebusterInfo && rimraf archive.zip && rimraf ./dist",
+    "deploy-new": "npm run build && fiori deploy --config deploy.yaml -- -y && rimraf archive.zip && rimraf ./dist",
+    "start-noflp": "fiori run --open 'index.html'",
+    "start-variants-management": "fiori run --open \"preview.html?fiori-tools-rta-mode=true&sap-ui-rta-skip-flex-validation=true#preview-app\"",
+    "unit-tests": "fiori run --open test/unit/unitTests.qunit.html",
+    "int-tests": "fiori run --open test/integration/opaTests.qunit.html"
+  },
+  "ui5": {
+    "dependencies": [
+      "@sap/ux-ui5-tooling"
+    ]
+  },
+  "sapuxLayer": "CUSTOMER_BASE"
+}

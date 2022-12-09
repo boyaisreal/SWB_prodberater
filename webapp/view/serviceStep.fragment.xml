@@ -1,0 +1,18 @@
+<core:FragmentDefinition
+	xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+>
+
+<WizardStep id="servicesStep"
+								title="Dienstleistungen"
+								validated="true"
+								nextStep="additionalProductsStep"
+                                icon="sap-icon://bookmark"
+								activate="servicesStepActivate">
+						<MessageStrip class="sapUiSmallMarginBottom"
+								text="Es stehen aktuell keine Dienstleistungsprodukte zur Verfügung."
+								showIcon="true"/>
+					</WizardStep>
+</core:FragmentDefinition>

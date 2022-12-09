@@ -1,0 +1,18 @@
+<core:FragmentDefinition
+	xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+>
+
+<WizardStep id="additionalProductsStep"
+								title="Zusatzprodukte"
+								validated="true"
+                                icon="sap-icon://puzzle"
+								activate="additionalProductsStepActivate">
+						<MessageStrip class="sapUiSmallMarginBottom"
+								text="Folgende Zusatzprodukte sind möglich. DIESE sind nur zu Demozecken hier angezeigt und nicht verwendet."
+								showIcon="true"/>
+								<core:Fragment fragmentName="sap.ui.mr.learn.odatadraftone.view.addServiceCard" type="XML" class="sapUiLargeMarginTop"/>
+					</WizardStep>
+</core:FragmentDefinition>

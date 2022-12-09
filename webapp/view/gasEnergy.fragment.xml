@@ -1,0 +1,35 @@
+<core:FragmentDefinition
+	xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+>
+
+<WizardStep id="gasStep"
+								title="Gas"
+								validated="true"
+								nextStep="waterAndSewageStep"
+                                icon="sap-icon://lightbulb"
+								activate="electricityStepActivate">
+						<MessageStrip class="sapUiSmallMarginBottom"
+								text="Bitte geben Sie hier den voraussichtlichen Gasverbrauch pro Jahr mit."
+								showIcon="true"/>
+							<VBox class="sapUiSmallMarginTop">
+								<HBox>
+									<VBox class="sapUiLargeMarginEnd"> 	
+										<Label text="Verbrauch: " labelFor="consumptionInputgas" />
+										<ComboBox id="consumptionInputgas" showSecondaryValues= "true" items="{path: 'util>/consumptionSetpsGas',sorter: { path: 'consumptionSetpsGas' }}" change="getProducts($event, 'gas')">
+											<core:ListItem key="{util>step}" text="{util>step}" additionalText="{util>addInformation}"/>
+										</ComboBox>
+									</VBox>
+									<VBox ></VBox>
+									<VBox > 	
+										<Label text="Verbrauch Vormieter:" labelFor="consumptionLastRentTextGas" />
+                               			<Text text="{util>/selectedConsumptionPoint/gas/LastConsumption}" id="consumptionLastRentTextGas"></Text>
+									</VBox>
+								</HBox>
+								<core:Fragment fragmentName="sap.ui.mr.learn.odatadraftone.view.CardCurrentCustomerProductGas" type="XML" class="sapUiLargeMarginTop"/>
+								<core:Fragment fragmentName="sap.ui.mr.learn.odatadraftone.view.CardGas" type="XML" class="sapUiLargeMarginTop"/>
+							</VBox>
+					</WizardStep>
+</core:FragmentDefinition>

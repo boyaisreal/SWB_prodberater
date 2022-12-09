@@ -1,0 +1,98 @@
+<core:FragmentDefinition
+	xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	 xmlns:f="sap.f"
+>
+
+<WizardStep id="deliveryPointStep"
+								title="Lieferstelle"
+                                icon="sap-icon://home"
+								subsequentSteps="electricityStep, gasStep, waterAndSewageStep"
+								complete="goToSparte('1','4')">
+<MessageStrip class="sapUiSmallMarginBottom"
+								text="Bitte geben Sie hier die Adresse ein für die Produktberatung."
+								showIcon="true"/>
+
+							<VBox id="deliveryPointStepAdressBox">
+                                <HBox>
+                                	<VBox class="sapUiSmallMarginEnd">
+                                		<Label text="PLZ" labelFor="plzInput" required="true" />
+                                		<Input id="plzInput" value="{util>/selectedAdress/PostCode}" maxSuggestionWidth="30rem" fieldGroupIds="/plzAndLocation/" showSuggestion="true" startSuggestion="2" required="true" suggest="handlePLZSuggest"  change="onPostcodeChange($event, '/plzAndLocation/')"  suggestionItemSelected="onSuggestionAddressItemSelected($event,'/plzAndLocation/','')"></Input>
+                                	</VBox>
+                                	<VBox class="sapUiLargeMarginEnd">
+                                		<Label text="Ort" labelFor="locationInput" required="true"/>
+                                		<Input id="locationInput" value="{util>/selectedAdress/City}" width="250px" maxSuggestionWidth="30rem" fieldGroupIds="/plzAndLocation/" showSuggestion="true" startSuggestion="2"  required="true" suggest="handleCitySuggest" change="onCityChange($event, '/plzAndLocation/')" suggestionItemSelected="onSuggestionAddressItemSelected($event,'/plzAndLocation/','')"></Input>
+                                	</VBox>
+                                	<VBox class="sapUiSmallMarginEnd">
+                                		<Label text="Straße" labelFor="streetInput" required="true" />
+                                		<Input id="streetInput" value="{util>/selectedAdress/Street}" width="250px" enabled="false" maxSuggestionWidth="30rem" fieldGroupIds="/plzAndLocation/" showSuggestion="true" startSuggestion="2"  required="true" suggest="handleStreetSuggest" change="onStreetChange($event, '/streetSuggestion/')"></Input>
+                                	</VBox>
+                                	<VBox class="sapUiMediumMarginEnd">
+                                		<Label text="Nr." labelFor="housenummberInput" required="true" />
+                                		<Input id="housenummberInput"    value="{util>/selectedAdress/HouseNumber}" width="100px" enabled="false" required="true" change="readAddressData"></Input>
+                                	</VBox>
+                                	<VBox class="sapUiSmallMarginEnd">
+                                		<Label text="Kundengruppe" labelFor="productInput" />                  
+               					 		<HBox>
+											<RadioButtonGroup id="customerGroup" columns="2" select="onChangeCustomerType">
+												<RadioButton text="Privatkunde" selected="true" key="privateCustomer"/>
+												<RadioButton text="Gewerbekunde" />
+											</RadioButtonGroup>
+                 						</HBox>
+									</VBox>
+                        		</HBox>
+							</VBox>
+							<VBox class="sapUiLargeMarginTop"> 	
+								<Label text="Verbrauchstelle auswählen" labelFor="consumptionPointInput" />
+                                <ComboBox id="consumptionPointInput" items="{path: 'util>/consumptionPointData',sorter: { path: 'PremiseID' }}" width="100%" enabled="{= !!${util>/selectedAdress/Street} &amp;&amp; !!${util>/selectedAdress/HouseNumber}}" change="onConsumptionPointChange">
+									<core:Item id="iteams" key="{util>PremiseID}" text="VS: {util>PremiseID} | Vormieter: {util>VorMieter} | Stromzähler: {path: 'util>InstallationDataElectricity/GERNR', formatter: '.Formatter.formatLoadingZero'} | Gaszähler: {path: 'util>InstallationDataGas/GERNR', formatter: '.Formatter.formatLoadingZero'} | Wasserzähler: {path: 'util>InstallationDataWater/GERNR', formatter: '.Formatter.formatLoadingZero'} ">
+									</core:Item>
+									
+								</ComboBox>
+							</VBox>
+							<HBox>
+								<VBox class="sapUiLargeMarginTop"> 	
+									<Label text="Verfügbare Sparten:" class="cardHeadline" />
+									<HBox>
+										<VBox class="sapUiSmallMarginTop cardColum" visible="{=${util>/selectedConsumptionPoint/electricNav}}" textAlign="Center" id="electricInfo">
+											<Image src="{ path:'util>/energyImg/electricImg', formatter:'.Formatter.formatImagePath'}" height="70px" />	
+											<HBox class="sapUiSmallMarginTop">
+											<Text text="Stromzähler:  "  />
+											<Text text="{util>/selectedConsumptionPoint/electric/InstallationID}"  />
+											</HBox>
+										</VBox>
+										<VBox class="sapUiSmallMarginTop sapUiLargeMarginBegin cardColum" visible="{=${util>/selectedConsumptionPoint/gasNav}}" textAlign="Center" id="gascInfo">
+											<Image src="{ path:'util>/energyImg/gasImg', formatter:'.Formatter.formatImagePath'}" height="70px" />	
+											<HBox class="sapUiSmallMarginTop">
+											<Text text="Gaszähler:  " />
+											<Text text="{util>/selectedConsumptionPoint/gas/InstallationID}"/>
+											</HBox>
+										</VBox>
+										<VBox class="sapUiSmallMarginTop sapUiLargeMarginBegin cardColum" visible="{=${util>/selectedConsumptionPoint/waterNav}}" textAlign="Center" id="watercInfo">
+											<Image src="{ path:'util>/energyImg/waterImg', formatter:'.Formatter.formatImagePath'}" height="70px" />	
+											<HBox class="sapUiSmallMarginTop">
+											<Text text="Wasserzähler:  " />
+											<Text text="{util>/selectedConsumptionPoint/water/InstallationID}"/>
+											</HBox>
+										</VBox>
+									</HBox>	
+								</VBox>
+								<VBox class="sapUiLargeMarginTop sapUiLargeMarginBegin"> 	
+									<Label text="Weitere Informationen: " class="cardHeadline" />
+									<HBox>
+										<VBox class="sapUiSmallMarginTop" visible="{=${util>/selectedConsumptionPoint/electricNav} || ${util>/selectedConsumptionPoint/gasNav} || ${util>/selectedConsumptionPoint/waterNav} }" textAlign="Center" id="VormieterInfo">											
+											<Text text="Vormieter: "/>
+											<Text text="Vertragslänge: "  class="sapUiSmallMarginTop"/>											
+										</VBox>
+										<VBox class="sapUiSmallMarginTop" visible="{=${util>/selectedConsumptionPoint/electricNav} || ${util>/selectedConsumptionPoint/gasNav} || ${util>/selectedConsumptionPoint/waterNav} }" textAlign="Center" id="VormieterContractInfo">	
+												<Text text="{util>/selectedConsumptionPoint/consumptionPointData/mieter}" class="sapUiSmallMarginBegin"/>
+												<Text text="{util>/selectedConsumptionPoint/consumptionPointData/contractLength}" class="sapUiSmallMarginBegin sapUiSmallMarginTop"/>											
+										</VBox>
+									</HBox>
+								</VBox>	
+							</HBox>
+
+                            </WizardStep>
+</core:FragmentDefinition>

@@ -1,0 +1,84 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:f="sap.f">
+
+	<HBox alignItems="Start" justifyContent="Start" wrap="Wrap" fitContainer= "true" items="{path: 'util>/showedgasProducts/'}" class="sapUiSmallMarginBegin">
+		<items >
+			<f:Card width="300px" class="sapUiSmallMarginBeginEnd sapUiLargeMarginBottom">
+				<f:content>
+					<VBox class = "defaultStyle">
+						<customData>
+							<core:CustomData key="status-snr" value="{= ${util>Product/IsSelected} ? 'Ausgewählt' : 'Auswählen'}" writeToDom="true" />
+						</customData>
+						<VBox class="cardColum" width="300px">
+							<Image src="{ path:'util>/energyImg/gasImg', formatter:'.Formatter.formatImagePath'}" height="70px" />
+							<Text text ="{util>Product/ProductFamily}" class="textround" textAlign="Center" width="auto"/>
+							<Text text="{util>Product/Description}" textAlign="Center" class="cardHeadline" />
+							<Text text="{util>Product/TariffType}" textAlign="Center" class="cardSubheadline" />
+						</VBox >
+						<VBox class="sapUiMediumMarginTop ">
+							<HBox>
+								<core:Icon class="sapUiSmallMarginBegin" src="sap-icon://accept" color="#031E48">
+								</core:Icon>
+								<Text text="{util>Product/PriceGuaranteeDuration} {util>Product/PriceGuaranteeUnit} Preisgarantie" textAlign="Begin" class="cardAdditionalInfo1" />
+							</HBox>
+							<HBox>
+								<core:Icon class="sapUiSmallMarginBegin" src="sap-icon://accept" color="#031E48">
+								</core:Icon>
+								<Text text="{util>Product/InitValidityDuration} {util>Product/InitValidityUnit} Vertragslaufzeit" textAlign="Begin" class="cardAdditionalInfo1" />
+							</HBox>
+							<HBox>
+								<core:Icon class="sapUiSmallMarginBegin" src="sap-icon://accept" color="#031E48">
+								</core:Icon>
+								<Text text="{util>Product/ProductInfo} " textAlign="Begin" class="cardAdditionalInfo1" />
+							</HBox>
+						</VBox >
+
+						<VBox class="sapUiMediumMarginTop sapUiSmallMarginEnd">
+							<HBox justifyContent="SpaceBetween">
+								<HBox>
+									<core:Icon class="sapUiSmallMarginBegin" src="sap-icon://message-information" color="#031E48">
+									</core:Icon>
+									<Text text="Arbeitspreis" textAlign="Begin" class="cardAdditionalInfo2" />
+								</HBox>
+								<Text text="{path: 'util>Prices/results/0/PriceGross', formatter:'.Formatter.formatPricesWorkingPriceInCent'}" textAlign="End" class="cardAdditionalInfo1" />
+							</HBox>
+							<HBox justifyContent="SpaceBetween">
+								<HBox>
+									<core:Icon class="sapUiSmallMarginBegin" src="sap-icon://message-information" color="#031E48">
+									</core:Icon>
+									<Text text="Grundpreis" textAlign="Begin" class="cardAdditionalInfo2" />
+								</HBox>
+								<Text text="{path: 'util>Prices/results/1/PriceGross', formatter:'.Formatter.formatPrices'}" textAlign="End" class="cardAdditionalInfo1" />
+							</HBox>
+							<HBox justifyContent="SpaceBetween">
+								<HBox>
+									<core:Icon class="sapUiSmallMarginBegin" src="sap-icon://message-information" color="#031E48">
+									</core:Icon>
+									<Text text="Abschlag für 11 Monate" textAlign="Begin" class="cardAdditionalInfo2" />
+								</HBox>
+								<ObjectStatus text="{path: 'util>Prices/totalMonthPrice', formatter:'.Formatter.formatPrices'}" state="Success" class="cardAdditionalInfo1" />
+							</HBox>
+							<HBox justifyContent="SpaceBetween">
+								<HBox>
+									<core:Icon class="sapUiSmallMarginBegin" src="sap-icon://message-information" color="#031E48">
+									</core:Icon>
+									<Text text="Jahrespreis" textAlign="Begin" class="cardAdditionalInfo2" />
+								</HBox>
+								<Text text="{path: 'util>Prices/results/2/PriceGross', formatter:'.Formatter.formatPricesYear'} " textAlign="End" class="cardAdditionalInfo1" />
+							</HBox>
+						</VBox >
+						<VBox class="cardColum sapUiTinyMarginBottom">
+							<Button text="{= ${util>Product/IsSelected} ? 'Ausgewählt' : 'Auswählen'}" width="250px" type="Emphasized" press="onCardSelcted($event,'gas')"/>
+
+						</VBox >
+
+					</VBox>
+
+
+				</f:content>
+			</f:Card>
+		</items>
+	</HBox>
+
+</core:FragmentDefinition>

@@ -1,0 +1,47 @@
+<core:FragmentDefinition
+	xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+>
+
+ <WizardStep id="waterAndSewageStep"
+								title="Wasser &amp; Abwasser"
+								validated="true"
+                                icon="sap-icon://home"
+								activate="waterAndSewageStepActivate">
+						<MessageStrip class="sapUiSmallMarginBottom"
+								text="The Wizard control is supposed to break down large tasks, into smaller steps, easier for the user to work with."
+								showIcon="true"/>
+								<VBox class="sapUiSmallMarginTop">
+								<HBox >
+									<Text text="Wie viele Personen leben in Ihrem Haushalt?" class="sapUiTinyMarginTop"/>
+									<SegmentedButton selectedKey="one" class="sapUiSmallMarginBegin" selectionChange="onSelectionChange" width="300px">
+										<items>
+											<SegmentedButtonItem text="1" key="one" />
+											<SegmentedButtonItem text="2" key="two"/>
+											<SegmentedButtonItem text="3" key="three"/>
+											<SegmentedButtonItem text="4" key="four"/>
+											<SegmentedButtonItem text="5+" key="five"/>
+										</items>
+									</SegmentedButton>
+								</HBox>
+								<HBox class="sapUiMediumMarginTop">
+									<VBox class="sapUiLargeMarginEnd "> 	
+										<Label text="Verbrauch: " labelFor="consumptionInputwater" />
+										<ComboBox id="consumptionInputwater" showSecondaryValues= "true" items="{path: 'util>/consumptionSetpsWater',sorter: { path: 'consumptionSetpsWater' }}" change="getProducts($event, 'water')">
+											<core:ListItem key="{util>step}" text="{util>step}" additionalText="{util>addInformation}"/>
+										</ComboBox>
+									</VBox>
+									<VBox ></VBox>
+									<VBox > 	
+										<Label text="Verbrauch Vormieter:" labelFor="consumptionLastRentTextWater" />
+                               			<Text text="{util>/selectedConsumptionPoint/water/LastConsumption}" id="consumptionLastRentTextWater"></Text>
+									</VBox>
+								</HBox>
+								<HBox>
+								<core:Fragment fragmentName="sap.ui.mr.learn.odatadraftone.view.CardWater" type="XML" class="sapUiLargeMarginTop sapUiLargeMarginBottom sapUiLargeMarginEnd"/>								
+								</HBox>
+							</VBox>
+					</WizardStep>
+</core:FragmentDefinition>

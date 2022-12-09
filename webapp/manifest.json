@@ -1,0 +1,131 @@
+{
+  "_version": "1.32.0",
+  "sap.app": {
+    "id": "sap.ui.mr.learn.odatadraftone",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "dataSources": {
+      "NGU_DISPLAY": {
+        "uri": "/sap/opu/odata/REPLY/NGU_DIPSLAY_SRV",
+        "type": "OData"
+      },
+      "ZYP_SAPP_ODATA_PROD_ADV_SRV": {
+				"uri": "/sap/opu/odata/SAP/ZYP_SAPP_ODATA_PROD_ADV_SRV",
+				"type": "OData"
+			},
+      "util": {
+        "uri": "model/util.json",
+        "type": "JSON"
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.97.0",
+      "libs": {
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": 
+        {
+          "bundleName": "sap.ui.mr.learn.odatadraftone.i18n.i18n"
+          }
+        },
+      "util": {
+        "type": "sap.ui.model.json.JSONModel",
+        "dataSource": "util"
+            },
+      "main": {
+        "dataSource": "NGU_DISPLAY",
+        "preload": true,
+        "type": "sap.ui.model.odata.v2.ODataModel",
+        "settings": {
+          "defaultBindingMode": "OneWay",
+          "useBatch": "true",
+          "defaultOperationMode":"Server",
+          "defaultCountMode": "Inline"
+
+        }
+      },
+      "adress": {
+        "dataSource": "ZYP_SAPP_ODATA_PROD_ADV_SRV",
+        "preload": true,
+        "type": "sap.ui.model.odata.v2.ODataModel",
+        "settings": {
+          "defaultBindingMode": "OneWay",
+          "useBatch": "true",
+          "defaultOperationMode":"Server",
+          "defaultCountMode": "Inline"
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "sap.ui.mr.learn.odatadraftone.view",
+        "clearTarget": false,
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+        "routes": [
+        {
+         "pattern": "",
+         "name": "main",
+         "target": "main"
+        }
+         ],
+    "targets": {
+        "main": {
+         "viewId": "view",
+         "viewName": "view"
+        }
+    }
+    },
+    "rootView": {
+      "viewName": "sap.ui.mr.learn.odatadraftone.view.view",
+      "type": "XML",
+      "async": true,
+      "id": "app"
+    }
+  }
+}
+

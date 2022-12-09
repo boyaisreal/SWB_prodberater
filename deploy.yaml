@@ -1,0 +1,34 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "1.0"
+resources:
+  # f�r die korrekte Darstellung der Umlaute aus den I18N Files
+  configuration:
+    # propertiesFileSourceEncoding: ISO-8859-1
+    propertiesFileSourceEncoding: UTF-8
+metadata:
+  name: "sap.ui.mr.learn.odatadraftone"
+type: application
+ui5Theme: sap_fiori_3
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        ignoreCertError: true # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
+        target:
+          url: https://power-gw.4brandsreply.de:44300
+          client: "498"
+        credentials:
+          username: env:PROXY_USERNAME
+          password: env:PROXY_PASSWORD
+        app:
+          name: /REPLY/APSL004PT
+          description: "Produktesberater aka SWB App"
+          package: /REPLY/SAPP_PSL004
+          transport: "PG1K900758"
+          calc_appindex: true

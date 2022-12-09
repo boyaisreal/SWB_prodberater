@@ -1,0 +1,81 @@
+.size1 {
+	font-size : 4rem;
+}
+
+.card{
+    align-items: center;
+}
+
+.cardColum{
+    align-items: center;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.textround{
+        border-radius: 25px;
+        background: #eedbeb;
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-top: 5px;
+        padding: 4px 10px 20px 10px;
+        width: 100px;
+        height: 20px;   
+        font-weight: bold;
+        text-align: center;
+        
+}
+
+.cardHeadline{
+    font-weight: 600;
+    font-size: 17px;
+    margin-top: 15px;
+}
+
+.cardSubheadline{
+    font-weight: 100;
+    font-size: 10px;
+    margin-top: 5px;
+}
+
+.cardAdditionalInfo1{
+    margin-left: 5px;
+    font-weight: 700;
+    font-size: 11px;
+    margin-top: 5px;
+}
+
+.cardAdditionalInfo2{
+    margin-left: 5px;
+    font-weight: 100;
+    font-size: 10px;
+    margin-top: 5px;
+}
+.cradInfoIcon{
+    size: 5px;
+    margin-right: 5px;
+}
+
+.cardGreenText{
+    color: green;
+}
+
+.textAlinment{
+    text-align: start;
+}
+
+.serviceCardInfoText{
+    margin-left: 5px;
+    font-weight: 300;
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+.oldContratc{
+    background-color: lightgray;
+}
+
+
+[data-status-snr = "Ausgewählt"] {
+  background-color: lightblue !important;
+}

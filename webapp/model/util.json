@@ -1,0 +1,115 @@
+{
+    "fragments" :[
+             {"name" :"sap.ui.mr.learn.odatadraftone.view.deliveryPointStep"},
+             {"name" :"sap.ui.mr.learn.odatadraftone.view.stromEnergy"},
+             {"name" :"sap.ui.mr.learn.odatadraftone.view.gasEnergy"},
+             {"name" :"sap.ui.mr.learn.odatadraftone.view.waterEnergy"}
+
+    ],
+
+    "visibility":{
+        "forward": true
+    },
+
+    "bp":{
+        "givenBP": false,
+        "bpId": "",
+        "bpData": {}
+    },
+
+    "oldContracts":{
+        "contractElectric":{},
+        "contractGas":{},
+        "contractWater":{}
+    },
+
+    "plzAndLocation":{},
+
+    "streetSuggestion":{},
+
+    "counter":{
+        "ElectricInstallation":"",
+        "GasInstallation":"",
+        "WaterInstallation":""
+
+    },
+
+    "sendDataToApp":{
+        "selectedAdress":{},
+        "bp":{},
+        "oldContract":{},
+        "counter":{},
+        "selectedProducts":{}
+    },
+
+    "selectedAdress" :{
+        "PostCode":"",
+        "City":"",
+        "Street":"",
+        "HouseNumber":"",
+        "CustomerType": "PK"
+    },
+
+    "selectedConsumptionPoint":{
+        "id":"",
+        "electric": {},
+        "gas": {},
+        "water":{},
+        "electricNav" : false,
+        "gasNav": false,
+        "waterNav" : false,
+        "electricNextStep": "gasStep",
+        "lastStep": "gasStep",
+        "gasNextStep" : "",
+        "consumptionPointData": {}
+    },
+
+
+    "selectedProducts":{
+        "selectedProductelectric": {},
+        "selectedProductgas": {},
+        "selectedProductwater": {},
+        "selectedProductservice": {}
+
+    },
+
+    "energyImg":{
+        "electricImg" :"/img/electric.png",
+        "gasImg" : "/img/Gas.png",
+        "waterImg" :  "/img/water.png"
+    },
+
+    "consumptionSetpsElectric":[
+        {"step" : 1500,"addInformation" : "kWh(1 Person)"},
+        {"step" : 2500, "addInformation" : "kWh(2 Person)"},
+        {"step" : 3500, "addInformation" : "kWh(3 Person)"},
+        {"step" : 4500, "addInformation" : "kWh(4 Person)"},
+        {"step" : 5500, "addInformation" : "kWh(5 Person)"},
+        {"step" : 6500, "addInformation" : "kWh(6 Person)"}
+
+    ],
+
+    "consumptionSetpsGas":[
+        {"step" : 4000,"addInformation" : "kWh (30m² Wohnfäche)"},
+        {"step" : 7000, "addInformation" : "kWh (60m² Wohnfäche)"},
+        {"step" : 14000, "addInformation" : "kWh (100m² Wohnfäche)"},
+        {"step" : 20000, "addInformation" : "kWh (200m² Wohnfäche)"}
+
+    ],
+
+    "consumptionSetpsWater":[
+        {"step" : 160,"addInformation" : "m³"},
+        {"step" : 200, "addInformation" : "m³"},
+        {"step" : 240, "addInformation" : "m³"},
+        {"step" : 300, "addInformation" : "m³"},
+        {"step" : 340, "addInformation" : "m³"}
+
+    ],
+
+
+    "cardService":[
+        {"header":"Umzugsservice", "subheader": "kostenfrei", "infoOne": "Umzugsratgeber & Checkliste" ,"infoTwo": "Umzugskosten berechnen" ,"infoThree": "Förderung bei Umzug","infoFoure": "Kostenfreie Umzugskartons liefern lassen","infoFive": "", "image" : "/img/umzug.png", "IsSelected": false},
+        {"header":"Grundpreis geschenkt", "subheader": "Bis zu 3 Monate", "infoOne": "Stadtwerke übernimmt Grundgebühr" ,"infoTwo": "Keine doppelte Grundgebühr" ,"infoThree": "Für alle Wohnungen","infoFoure": "Max 3 Monate","infoFive": "", "image" : "/img/geld.png", "IsSelected": false}
+    ]
+    
+}

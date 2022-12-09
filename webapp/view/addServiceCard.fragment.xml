@@ -1,0 +1,45 @@
+
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+    xmlns:f="sap.f">
+
+    
+
+<HBox alignItems="Start" justifyContent="Start" wrap="Wrap"  fitContainer= "true" items="{path: 'util>/cardService/'}" class="sapUiSmallMarginBegin" >
+<items >
+<f:Card width="350px" class="sapUiSmallMarginBeginEnd sapUiLargeMarginBottom">
+	<f:content>
+	<VBox class = "defaultStyle">
+		<customData>
+    		<core:CustomData key="status-snr" value="{= ${util>IsSelected} ? 'Ausgewählt' : 'Auswählen'}" writeToDom="true" />
+  		</customData>
+        <HBox class ="textAlinment">
+            <Image src="{ path:'util>image', formatter:'.Formatter.formatImagePath'}" height="100px" class="sapUiLargeMarginEnd sapUiTinyMarginBegin" />
+                <VBox>
+                    <Text text="{util>header}"  class="cardHeadline" />
+                    <Text text="{util>subheader}"  class="cardHeadline sapUiSmallMarginTop cardGreenText" />
+                </VBox>
+         </HBox>
+
+    	<Text text="{util>infoOne}" textAlign="Begin" class="serviceCardInfoText"/>
+        <Text text="{util>infoTwo}" textAlign="Begin" class="serviceCardInfoText"/>
+        <Text text="{util>infoThree}" textAlign="Begin" class="serviceCardInfoText" />
+        <Text text="{util>infoFoure}" textAlign="Begin" class="serviceCardInfoText" />
+        <Text text="{util>infoFive}" textAlign="Begin" class="serviceCardInfoText" />
+
+        <VBox class="cardColum sapUiTinyMarginBottom" >	
+		<Button text="{= ${util>IsSelected} ? 'Ausgewählt' : 'Auswählen'}"  width="250px" type="Emphasized" press="onCardSelcted($event, 'service')"/>
+
+		</VBox >
+	</VBox>
+
+    	
+										
+		
+			</f:content>
+		</f:Card>
+	</items>
+</HBox>
+
+</core:FragmentDefinition>
